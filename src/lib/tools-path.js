@@ -31,7 +31,9 @@ export function defineCSSDestPath(dirname, basePath, result, opts) {
     const from = path.resolve(result.opts.from);
     let to;
 
-    if (result.opts.to) {
+    if (opts.cssOutputPath) {
+        to = opts.cssOutputPath;
+    } else if (result.opts.to) {
         /**
          * if to === from we can't use it as a valid dest path
          * e.g: gulp-postcss comes with this problem

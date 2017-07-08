@@ -97,3 +97,22 @@ if preservePath == true && postcss-import`, t => {
 
         t.is(result, 'dest');
     });
+
+test('defineCSSDestPath should return the \'opts.cssOutputPath\'', t => {
+    const result = defineCSSDestPath(
+        'src',
+        'src',
+        {
+            opts: {
+                from: 'src/index.css',
+                to: 'src/index.css'
+            }
+        },
+        {
+            dest: 'dest',
+            cssOutputPath: 'css'
+        }
+    );
+
+    t.is(result, 'css');
+});
