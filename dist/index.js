@@ -159,6 +159,10 @@ function processUrl(result, decl, node, opts) {
             fileMetaTransformed.resultAbsolutePath = decodeURI(_path2.default.resolve(opts.dest, resultUrl.pathname));
             fileMetaTransformed.extra = (resultUrl.search || '') + (resultUrl.hash || '');
 
+            if (opts.occurrence) {
+                opts.occurrence(fileMeta);
+            }
+
             return fileMetaTransformed;
         }).then(function (fileMetaTransformed) {
             return fileMetaTransformed.contents;

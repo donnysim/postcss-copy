@@ -153,6 +153,10 @@ function processUrl(result, decl, node, opts) {
                     fileMetaTransformed.extra = (resultUrl.search || '') +
                         (resultUrl.hash || '');
 
+                    if (opts.occurrence) {
+                        opts.occurrence(fileMeta);
+                    }
+
                     return fileMetaTransformed;
                 })
                 .then(fileMetaTransformed => fileMetaTransformed.contents);
