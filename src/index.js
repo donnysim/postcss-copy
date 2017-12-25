@@ -169,8 +169,12 @@ function processUrl(result, decl, node, opts) {
             opts
         );
 
-        node.value = path
-            .relative(destPath, fileMeta.resultAbsolutePath)
+        const pubPath = opts.publicRootPath ?
+            '/' + path.relative(opts.publicRootPath,
+                fileMeta.resultAbsolutePath) :
+            path.relative(destPath, fileMeta.resultAbsolutePath);
+
+        node.value = pubPath
             .split('\\')
             .join('/') + fileMeta.extra;
     });

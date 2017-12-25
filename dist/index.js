@@ -170,7 +170,9 @@ function processUrl(result, decl, node, opts) {
     }).then(function () {
         var destPath = (0, _toolsPath.defineCSSDestPath)(dirname, fileMeta.basePath, result, opts);
 
-        node.value = _path2.default.relative(destPath, fileMeta.resultAbsolutePath).split('\\').join('/') + fileMeta.extra;
+        var pubPath = opts.publicRootPath ? '/' + _path2.default.relative(opts.publicRootPath, fileMeta.resultAbsolutePath) : _path2.default.relative(destPath, fileMeta.resultAbsolutePath);
+
+        node.value = pubPath.split('\\').join('/') + fileMeta.extra;
     });
 }
 
